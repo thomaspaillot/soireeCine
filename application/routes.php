@@ -37,7 +37,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('/', function() {
 		$movies = Movie::with(array('user', 'votes_all' => function($query) {
 			$query->where('user_id', '=', Auth::user()->id);
-		}))->order_by('votes', 'asc')->get();
+		}))->order_by('votes', 'desc')->get();
 		
 		return View::make('index')->with('movies', $movies)->with('page', 'main_page');
 	});
@@ -55,13 +55,9 @@ Route::group(array('before' => 'auth'), function() {
 		return Redirect::to('/');
 	});
 	
-	Route::post('increment_vote', function() {
-		$new_movie_vote = array(
-			'votes'	=> Input::get('votes')
-		);
-		
-		$movie = Movie::find(1);
-		$movie->votes = $new_movie_vote['votes'];
+	Route::post('increment_vote', function() {		
+		$movie = Movie::find(Input::get('movie_id'));
+		$movie->votes = Input::get('votes');
 		$movie->save();
 		
 		$new_vote = array(
@@ -72,7 +68,7 @@ Route::group(array('before' => 'auth'), function() {
 		$vote = new Vote($new_vote);
 		$vote->save();
 		
-		return Response::json($new_movie_vote);
+		return Response::json(array('votes'	=> Input::get('votes')));
 	});
 	
 	Route::get('logout', function() {
@@ -86,9 +82,21 @@ Route::get('login', function() {
 });
 
 Route::post('login', function() {
+	if(Auth::check()) return Redirect::to('/');
+	
 	$credentials = array('username' => Input::get('username'), 
 						 'password' => Input::get('password'));
-
+					
+	if(Input::get('new_user')) {
+		$new_user = array(
+			'username' => Input::get('username'),
+			'password' => Input::get('password')
+		);
+		
+		$user = new User($new_user);
+		$user->save();
+	} 
+	
 	if(Auth::attempt($credentials)) {
 		return Redirect::to('/');
 	} else {

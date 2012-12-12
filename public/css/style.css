@@ -78,12 +78,15 @@ textarea {
     resize: vertical;
 }
 
+::-webkit-input-placeholder { color: #B4B4B4; }
+input:-moz-placeholder { color: #B4B4B4; }
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
 body {
-	font-family: "Caecilia LT Std", "Trebuchet MS", sans-serif;
+	font-family: "PT Sans", sans-serif;
 	background-color: #3C3C3C;
 }
 
@@ -126,7 +129,7 @@ header h1 {
 
 #login label,
 #login input {
-	font-family: "Caecilia LT Std", "Trebuchet MS", sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 20px;
 	display: block;
 }
@@ -135,10 +138,29 @@ header h1 {
 	margin-bottom: 6px;
 }
 
-#login input {
+input {
 	background-color: #DCDCDC;
 	border: 0;
 	padding: 6px 8px;
+}
+
+input.button {
+	border-radius: 2px;
+	text-align: center;
+}
+
+#login input[type="checkbox"] {
+	display: inline;
+	background-color: #DCDCDC;
+	border-radius: 2px;
+	width: 17px;
+	height: 17px;
+	color: #3C3C3C;
+	margin-right: 5px;
+}
+
+#login input[type="checkbox"]+label {
+	display: inline;
 }
 
 #login input[type="text"],
@@ -148,9 +170,7 @@ header h1 {
 }
 
 #login input.button {
-	border-radius: 2px;
-	text-align: center;
-	margin: 20px auto 0 auto;
+	float: right;
 }
 
 #login_nav {
@@ -163,22 +183,100 @@ header h1 {
 	clear: both;
 }
 
-form#add_movie {
-	width: 100%;
+#add_movie {
 	background-color: #FFF;
 	color: #3C3C3C;
 	padding: 10px 20px;
+	margin-bottom: 20px;
 }
 
-form#add_movie h2 {
-	display: inline;
+#add_movie h2 {
+	float: left;
 	font-size: 20px;
 	line-height: 22px;
 	text-transform: uppercase;
+	margin: 0 24px 0 0;
 }
 
+#add_movie input,
+#add_movie label {
+	float: left;
+	margin: 8px 0 0 10px;
+}
 
+#add_movie input[type="text"] {
+	width: 290px;
+}
 
+#add_movie input.button {
+	margin-left: 36px;
+}
+
+#film_list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	color: #FFF;
+}
+
+#film_list li {
+	background-color: #505050;
+	padding: 0 20px;
+	margin: 0 0 5px 0;
+}
+
+#film_list h2 {
+	float: left;
+	width: 70%;
+	font-size: 26px;
+	margin: 15px 0 0 0;
+}
+
+#film_list h2 a {
+	font-size: 16px;
+	color: #FFF;
+	margin-left: 15px;
+	font-weight: normal;
+}
+
+#film_list .toolbar {
+	float: left;
+	width: 30%;
+}
+
+#film_list .toolbar h3 {
+	float: right;
+	font-size: 16px;
+	font-weight: normal;
+	width: 60%;
+	text-align: right;
+}
+
+#film_list .toolbar h4 {
+	font-size: 42px;
+	color: #3C3C3C;
+	background-color: #FFF;
+	margin: 0 0 0 10px;
+	padding: 16px;
+	text-align: center;
+}
+
+#film_list .toolbar button,
+#film_list .toolbar h4 {
+	float: right;
+}
+
+#film_list .toolbar button {
+	background: url('../img/thumb_picto.png') left top no-repeat;
+	width: 19px;
+	height: 28px;
+	border: 0;
+	margin: 14px 10px 0 0;
+}
+
+#film_list .toolbar button:hover {
+	background-position: 0 -28px;
+}
 
 
 

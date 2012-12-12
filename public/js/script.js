@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 	
-	$('a.vote').click(function(evt) {
+	$('button.vote').click(function(evt) {
 		evt.preventDefault();
 		
 		var counter = $(this).parent().find('.votes_counter');
@@ -13,6 +13,7 @@ jQuery(document).ready(function($) {
 
 		$.post(BASE+'/increment_vote', data, function(data) {
 			$(counter).html(data.votes);
+			location.reload();
 		});
 	})
 	
