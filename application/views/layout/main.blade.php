@@ -22,7 +22,7 @@
 		
 		</header>
 	
-		<div class="content">
+		<div class="content clearfix">
 			@yield('content')
 		</div>
 	

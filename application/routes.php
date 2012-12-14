@@ -34,7 +34,7 @@
 
 Route::group(array('before' => 'auth'), function() {
 	
-	Route::get('/', function() {
+	Route::any('/', function() {
 		$movies = Movie::with(array('user', 'votes_all' => function($query) {
 			$query->where('user_id', '=', Auth::user()->id);
 		}))->order_by('votes', 'desc')->get();
@@ -44,11 +44,11 @@ Route::group(array('before' => 'auth'), function() {
 	
 	Route::post('add_movie', function() {
 		$new_movie = array(
-			'user_id' 	=> Input::get('user'),
-			'title' 	=> Input::get('title'),
-			'link' 		=> input::get('link')
+			'user_id' 		=> Input::get('user'),
+			'title' 		=> Input::get('title'),
+			'description' 	=> input::get('description')
 		);
-		
+	
 		$movie = new Movie($new_movie);
 		$movie->save();
 		

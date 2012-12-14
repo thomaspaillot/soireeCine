@@ -80,6 +80,8 @@ textarea {
 
 ::-webkit-input-placeholder { color: #B4B4B4; }
 input:-moz-placeholder { color: #B4B4B4; }
+::-webkit-textarea-placeholder { color: #B4B4B4; }
+textarea:-moz-placeholder { color: #B4B4B4; }
 
 /* ==========================================================================
    Author's custom styles
@@ -87,7 +89,7 @@ input:-moz-placeholder { color: #B4B4B4; }
 
 body {
 	font-family: "PT Sans", sans-serif;
-	background-color: #3C3C3C;
+	background-color: #1E1E1E;
 }
 
 a {
@@ -138,10 +140,13 @@ header h1 {
 	margin-bottom: 6px;
 }
 
-input {
+input,
+textarea {
 	background-color: #DCDCDC;
 	border: 0;
 	padding: 6px 8px;
+	font-size: 14px;
+	line-height: 20px;
 }
 
 input.button {
@@ -184,35 +189,51 @@ input.button {
 }
 
 #add_movie {
+	float: left;
 	background-color: #FFF;
 	color: #3C3C3C;
-	padding: 10px 20px;
-	margin-bottom: 20px;
+	padding: 10px 10px;
+	margin: 0 20px 20px 0;
+	width: 220px;
 }
 
 #add_movie h2 {
-	float: left;
-	font-size: 20px;
-	line-height: 22px;
+	font-size: 24px;
+	line-height: 28px;
 	text-transform: uppercase;
-	margin: 0 24px 0 0;
+	margin: 0 0 10px 0;
+}
+
+#add_movie label {
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+#add_movie label span {
+	font-size: 12px;
 }
 
 #add_movie input,
-#add_movie label {
-	float: left;
-	margin: 8px 0 0 10px;
+#add_movie textarea {
+	margin: 0 0 12px 0;
 }
 
-#add_movie input[type="text"] {
-	width: 290px;
+#add_movie input[type="text"],
+#add_movie textarea {
+	width: 90%;
+}
+
+#add_movie textarea {
+	height: 140px;
 }
 
 #add_movie input.button {
-	margin-left: 36px;
+	margin-top: 10px;
 }
 
 #film_list {
+	float: left;
+	width: 700px;
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
@@ -220,45 +241,46 @@ input.button {
 }
 
 #film_list li {
-	background-color: #505050;
-	padding: 0 20px;
-	margin: 0 0 5px 0;
+	padding: 0;
+	margin: 0 0 20px 0;
+}
+
+#film_list img {
+	border: 2px solid #FFF;
+	float: left;
+	width: 66px;
+	margin-right: 20px;
+}
+
+#film_list .info {
+	float: left;
+	width: 450px;
 }
 
 #film_list h2 {
-	float: left;
-	width: 70%;
+	display: inline-block;
 	font-size: 26px;
-	margin: 15px 0 0 0;
+	margin: 0 8px 0 0;
 }
 
-#film_list h2 a {
-	font-size: 16px;
-	color: #FFF;
-	margin-left: 15px;
+#film_list h3 {
+	display: inline-block;
+	font-size: 12px;
 	font-weight: normal;
+	color: #787878;
+	margin: 4px 0 0 0;
+}
+
+#film_list p {
+	font-size: 14px;
+	line-height: 20px;
+	color: #C8C8C8;
+	margin: 6px 0 0 0;
 }
 
 #film_list .toolbar {
-	float: left;
-	width: 30%;
-}
-
-#film_list .toolbar h3 {
 	float: right;
-	font-size: 16px;
-	font-weight: normal;
-	width: 60%;
-	text-align: right;
-}
-
-#film_list .toolbar h4 {
-	font-size: 42px;
-	color: #3C3C3C;
-	background-color: #FFF;
-	margin: 0 0 0 10px;
-	padding: 16px;
-	text-align: center;
+	width: 160px;
 }
 
 #film_list .toolbar button,
@@ -266,7 +288,13 @@ input.button {
 	float: right;
 }
 
-#film_list .toolbar button {
+#film_list h4 {
+	font-size: 60px;
+	margin: 0 0 0 10px;
+	padding: 16px;
+}
+
+#film_list button {
 	background: url('../img/thumb_picto.png') left top no-repeat;
 	width: 19px;
 	height: 28px;
