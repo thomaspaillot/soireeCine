@@ -20,7 +20,9 @@
 		<li class="clearfix">
 			<div class="info">
 				<h2>{{ $movie->title }}</h2>
+				<span class="popup_button"><span>i</span></span>
 				<h3>Ajouté par {{ $movie->user->username }}</h3>
+				
 				<p>{{ $movie->description }}</p>
 			</div>
 			

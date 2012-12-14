@@ -25,17 +25,21 @@
 		<div class="content clearfix">
 			@yield('content')
 		</div>
-	
-		<footer>
-		
-		</footer>
 	</div>
+	
+	<footer>
+		<div>
+			{{ HTML::image('img/tmdb-logo.png') }}
+			<p>This product uses the TMDb API but is not endorsed or certified by TMDb. Thomas Paillot 2012</p>
+		</div>
+	</footer>
 	
 	<script type="text/javascript">
 		var BASE = "{{ URL::base() }}";
 	</script>
 	
 	{{ HTML::script('js/jquery.min.js') }}
+	{{ HTML::script('js/underscore.min.js') }}
 	{{ HTML::script('js/script.js') }}
 </body>
 </html>

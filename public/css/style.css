@@ -118,7 +118,7 @@ header h1 {
 #main_page header h1 {
 	font-size: 36px;
 	line-height: 38px;
-	margin: 15px 0 40px 0;
+	margin: 15px 0 40px 10px;
 }
 
 #login {
@@ -242,7 +242,7 @@ input.button {
 
 #film_list li {
 	padding: 0;
-	margin: 0 0 20px 0;
+	margin: 0 0 30px 0;
 }
 
 #film_list img {
@@ -261,6 +261,42 @@ input.button {
 	display: inline-block;
 	font-size: 26px;
 	margin: 0 8px 0 0;
+}
+
+#film_list .popup_button {
+	position: relative;
+	display: inline-block;
+	overflow: visible;
+	margin: 0 8px 0 0;
+}
+
+#film_list .popup_button span {
+	font: 14px 'Georgia';
+	line-height: 12px;
+	font-style: italic;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: #FFF;
+	color: #3C3C3C;
+	padding: 1px 7px 0 7px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+#film_list .movie_popup {
+	position: absolute;
+	top: 25px;
+	right: 20px;
+	background-color: #FFF;
+	padding: 5px 10px;
+	border-radius: 2px;
+	width: 200px;
+	z-index: 100;
+}
+
+#film_list .movie_popup p {
+	color: #3C3C3C;
+	margin: 0;
 }
 
 #film_list h3 {
@@ -289,9 +325,11 @@ input.button {
 }
 
 #film_list h4 {
-	font-size: 60px;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	font-size: 50px;
 	margin: 0 0 0 10px;
-	padding: 16px;
+	padding: 30px 12px 30px 13px;
 }
 
 #film_list button {
@@ -299,7 +337,7 @@ input.button {
 	width: 19px;
 	height: 28px;
 	border: 0;
-	margin: 14px 10px 0 0;
+	margin: 30px 10px 0 0;
 }
 
 #film_list .toolbar button:hover {
@@ -307,6 +345,28 @@ input.button {
 }
 
 
+footer {
+	margin-top: 50px;
+	padding: 30px 0;
+	width: 100%;
+	background-color: #FFF;
+}
+
+footer div {
+	width: 960px;
+	margin: 0 auto;
+}
+
+footer img {
+	float: left;
+	width: 80px;
+	margin: 3px 10px 0 0;
+}
+
+footer p {
+	margin: 0;
+	font-size: 11px;
+}
 
 
 
