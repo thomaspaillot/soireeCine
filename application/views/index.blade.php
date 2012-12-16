@@ -2,20 +2,21 @@
 
 @section('content')
 
-	{{ Form::open('/', 'POST', array('id' => 'add_movie', 'class' => 'clearfix')) }}
+	{{ Form::open('add_movie', 'POST', array('id' => 'add_movie', 'class' => 'clearfix')) }}
 		<h2>Ajouter un film</h2>
 	
 		<label for="title">Titre <span>(en V.O.)</span></label>
 		<input type="text" name="title" placeholder="The Brooklyn Warriors">
 
 		<label for="description">Description <span>(200 signes max.)</span></label>
-		<textarea name="description" maxlength="200" placeholder="Tout simplement le meilleur film de tous les temps…"></textarea>
+		<textarea name="description" maxlength="200" placeholder="Faites nous rêver…"></textarea>
 	
 		<input type="hidden" value="{{ Auth::user()->id }}" name="user">
 		<input type="submit" value="Ajouter" class="button">
 	{{ Form::close() }}
 	
 	<ul id="film_list">
+		
 	@foreach($movies as $movie)
 		<li class="clearfix">
 			<div class="info">
@@ -34,6 +35,7 @@
 			</div>
 		</li>
 	@endforeach
+	
 	</ul>
 
 @endsection
