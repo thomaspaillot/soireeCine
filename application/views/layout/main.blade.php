@@ -8,6 +8,7 @@
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 	
 	{{ HTML::style('css/normalize.css')}}
+	{{ HTML::style('css/font-awesome.css')}}
 	{{ HTML::style('css/style.css')}}
 </head>
 

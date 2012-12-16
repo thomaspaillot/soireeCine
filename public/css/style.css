@@ -220,7 +220,7 @@ input.button {
 
 #add_movie input[type="text"],
 #add_movie textarea {
-	width: 90%;
+	width: 204px;
 }
 
 #add_movie textarea {
@@ -254,7 +254,7 @@ input.button {
 
 #film_list .info {
 	float: left;
-	width: 450px;
+	width: 500px;
 }
 
 #film_list h2 {
@@ -270,7 +270,7 @@ input.button {
 	margin: 0 8px 0 0;
 }
 
-#film_list .popup_button span {
+#film_list .popup_button a {
 	font: 14px 'Georgia';
 	line-height: 12px;
 	font-style: italic;
@@ -278,15 +278,16 @@ input.button {
 	cursor: pointer;
 	background-color: #FFF;
 	color: #3C3C3C;
-	padding: 1px 7px 0 7px;
+	padding: 1px 7px 1px 7px;
 	border-radius: 10px;
 	text-align: center;
+	text-decoration: none;
 }
 
 #film_list .movie_popup {
 	position: absolute;
 	top: 25px;
-	right: 20px;
+	left: 20px;
 	background-color: #FFF;
 	padding: 5px 10px;
 	border-radius: 2px;
@@ -316,32 +317,39 @@ input.button {
 
 #film_list .toolbar {
 	float: right;
-	width: 160px;
-}
-
-#film_list .toolbar button,
-#film_list .toolbar h4 {
-	float: right;
+	width: 20px;
+	margin: 6px 0 0 20px;
 }
 
 #film_list h4 {
+	float: right;
 	border-top: 1px solid #FFF;
-	border-bottom: 1px solid #FFF;
 	font-size: 50px;
 	margin: 0 0 0 10px;
 	padding: 30px 12px 30px 13px;
 }
 
 #film_list button {
-	background: url('../img/thumb_picto.png') left top no-repeat;
-	width: 19px;
-	height: 28px;
-	border: 0;
-	margin: 30px 10px 0 0;
+	display: block;
+	background-color: transparent;
+	border: none;
+	color: #FFF;
 }
 
-#film_list .toolbar button:hover {
-	background-position: 0 -28px;
+#film_list button:hover {
+	color: #3C3C3C;
+}
+
+#film_list button.vote {
+
+}
+
+#film_list button.remove {
+
+}
+
+#film_list button.edit {
+
 }
 
 

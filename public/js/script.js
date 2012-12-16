@@ -20,13 +20,8 @@ jQuery(document).ready(function($) {
 			if(data.total_results > 0) {
 				$(that).attr('id', data.results[0].id);
 				
-				if("poster_path" in data.results[0]) {
-					$(that).prepend('<img src="' + posterURL + posterSize + data.results[0].poster_path + '">');
-				} else {
-					$(that).prepend('<img src="' + BASE + '/img/blank_poster.png">');
-				}
-			} else { 
-				$(that).prepend('<img src="' + BASE + '/img/blank_poster.png">');
+				if("poster_path" in data.results[0])
+					$(that).find('.poster').attr('src', posterURL + posterSize + data.results[0].poster_path);
 			}
 		}, "json");
 	});
@@ -53,7 +48,7 @@ jQuery(document).ready(function($) {
 		
 		var data = {
 			'user_id': $('input[type="hidden"]').attr('value'),
-			'movie_id': $(this).attr('id'),
+			'movie_id': $(this).parent().attr('id'),
 			'votes': parseInt($(counter).html(), 10) + 1
 		}
 
