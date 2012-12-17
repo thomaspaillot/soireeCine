@@ -46,13 +46,28 @@ Route::group(array('before' => 'auth'), function() {
 		$new_movie = array(
 			'user_id' 		=> Input::get('user'),
 			'title' 		=> Input::get('title'),
-			'description' 	=> input::get('description')
+			'description' 	=> Input::get('description')
 		);
 	
 		$movie = new Movie($new_movie);
 		$movie->save();
 		
 		return Redirect::to('/');
+	});
+	
+	Route::post('update_movie', function() {
+		$movie = Movie::find(Input::get('movie_id'));
+		$movie->description = Input::get('description');
+		$movie->save();
+		
+		return Redirect::to('/');
+	});
+	
+	Route::post('remove_movie', function() {		
+		$movie = Movie::find(Input::get('movie_id'));
+		$movie->delete();
+		
+		return Response::json(array('movie_id'	=> Input::get('movie_id')));
 	});
 	
 	Route::post('increment_vote', function() {		

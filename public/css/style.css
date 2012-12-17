@@ -142,6 +142,7 @@ header h1 {
 
 input,
 textarea {
+	font-family: "PT Sans", sans-serif;
 	background-color: #DCDCDC;
 	border: 0;
 	padding: 6px 8px;
@@ -254,7 +255,7 @@ input.button {
 
 #film_list .info {
 	float: left;
-	width: 500px;
+	width: 600px;
 }
 
 #film_list h2 {
@@ -308,51 +309,117 @@ input.button {
 	margin: 4px 0 0 0;
 }
 
-#film_list p {
+/*** MOVIE DESCRIPTION & FORM ***/
+#film_list p,
+#film_list form.update_movie {
+	position: relative;
 	font-size: 14px;
 	line-height: 20px;
 	color: #C8C8C8;
 	margin: 6px 0 0 0;
 }
 
-#film_list .toolbar {
-	float: right;
-	width: 20px;
-	margin: 6px 0 0 20px;
-}
-
-#film_list h4 {
-	float: right;
-	border-top: 1px solid #FFF;
-	font-size: 50px;
-	margin: 0 0 0 10px;
-	padding: 30px 12px 30px 13px;
-}
-
-#film_list button {
-	display: block;
+#film_list form.update_movie textarea {
+	font-size: 14px;
+	line-height: 20px;
+	color: #C8C8C8;
+	padding: 0;
 	background-color: transparent;
-	border: none;
+	outline: 1px solid #555;
+	width: 410px;
+	overflow: hidden;
+	height: 65px;
+}
+
+#film_list form.update_movie input.button {
+	position: absolute;
+	right: -30px;
+	top: 0;
+	font-size: 12px;
+	padding: 2px 4px 0 4px;
+}
+
+#film_list p:hover .edit { display: inline-block; }
+
+#film_list p .edit {
+	display: none;
+	z-index: 100;
+	position: absolute;
+	top: -3px;
+	left: 65px;
+}
+
+/*** DROPDOWN OPTIONS MENU ***/
+#film_list .options {
+	display: inline-block;
+	margin-left: 10px;
+	padding-right: 10px;
+	position: relative;
 	color: #FFF;
+	overflow: visible;
+	text-decoration: none;
+	cursor: pointer;
 }
 
-#film_list button:hover {
-	color: #3C3C3C;
+#film_list .options:hover,
+#film_list .options.open {
+	color: #A71105;
 }
 
-#film_list button.vote {
-
+#film_list .dropdown-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	text-align: left;
+	display: none;
+	float: left;
+	left: 0;
+	margin: 0;
+	list-style-type: none;
+	min-width: 120px;
+	padding: 6px;
+	position: absolute;
+	top: 100%;
+	z-index: 1000;
 }
 
-#film_list button.remove {
+#film_list .dropdown-menu li { margin: 0 0 10px 0; }
+#film_list .dropdown-menu li:last-child { margin: 0; }
+#film_list .dropdown-menu a { text-decoration: none; }
+#film_list .dropdown-menu a:hover { color: #A71105; }
 
+/*** MOVIE VOTE ***/
+#film_list .vote_box {
+	border-top: 1px solid #FFF;
+	float: right;
+	width: 70px;
+	text-align: right;
+	
+	margin: 0 0 0 30px;
 }
 
-#film_list button.edit {
+#film_list .votes_counter {
+	display: inline-block;
+	font-size: 50px;
+	margin: 0;
+	padding: 30px 10px 10px 0;
+}
 
+#film_list a.vote {
+	position: relative;
+	top: -10px;
+	display: inline-block;
+	color: #DCDCDC;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#film_list a.vote:hover {
+	color: #A71105;
 }
 
 
+/*** FOOTER ***/
 footer {
 	margin-top: 50px;
 	padding: 30px 0;

@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 	}, "json");
 	
 	// PREPEND POSTER TO EACH MOVIE
-	$('#film_list li').each(function() {
+	$('.movie').each(function() {
 		var title = $(this).find('h2').text();
 		var that = this;
 		
@@ -26,8 +26,8 @@ jQuery(document).ready(function($) {
 		}, "json");
 	});
 	
-	$('#film_list .popup_button').mouseenter(function() {
-		var movie_id = $(this).parent().parent().attr('id');
+	$('.movie .popup_button').mouseenter(function() {
+		var movie_id = $(this).parents('.movie').attr('id');
 		var that = this;
 		
 		$.get(moviedbURL + 'movie/' + movie_id + apiKey, function(data) {
@@ -41,14 +41,13 @@ jQuery(document).ready(function($) {
 		$(this).find('.movie_popup').remove();
 	});
 	
-	$('button.vote').click(function(evt) {
-		evt.preventDefault();
-		
-		var counter = $(this).parent().find('.votes_counter');
+	// HANDLE VOTE
+	$('.vote').click(function(evt) {		
+		var counter = $(this).parents('.movie').find('.votes_counter');
 		
 		var data = {
 			'user_id': $('input[type="hidden"]').attr('value'),
-			'movie_id': $(this).parent().attr('id'),
+			'movie_id': $(this).parents('.movie').find('input[type="hidden"]').val(),
 			'votes': parseInt($(counter).html(), 10) + 1
 		}
 
@@ -58,6 +57,30 @@ jQuery(document).ready(function($) {
 		});
 	});
 	
+	// HANDLE EDIT DESCRIPTION
+	$('.edit').click(function(evt) {
+		$(this).parent().hide();
+		$(this).parent().parent().find('.update_movie').removeClass('hidden');
+	});
+	
+	// HANDLE REMOVE MOVIE
+	$('.remove').click(function(evt) {
+		var movie = $(this).parents('.movie');
+		var movie_id = $(movie).find('input[type="hidden"]').val();
+		
+		$.post(BASE+'/remove_movie', {'movie_id': movie_id}, function(data) {
+			$(movie).remove();
+		});
+	});
+	
+	// HANDLE OPTIONS DROPDOWN MENU
+	$('.options').mouseenter(function() {
+		$(this).addClass('open');
+		$(this).find('ul').show();
+	}).mouseleave(function() {
+		$(this).removeClass('open');
+		$(this).find('ul').hide();
+	});
 });
 
 
