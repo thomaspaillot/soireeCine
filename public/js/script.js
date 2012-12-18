@@ -8,7 +8,9 @@ jQuery(document).ready(function($) {
 				votes : function($elem) {
 					return $elem.find('.votes_counter').text();
 				}
-			}
+			},
+			sortBy : 'votes',
+			sortAscending : false
 		});
 	});
 	

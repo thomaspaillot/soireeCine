@@ -37,7 +37,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::any('/', function() {
 		$movies = Movie::with(array('user', 'votes_all' => function($query) {
 			$query->where('user_id', '=', Auth::user()->id);
-		}))->where('archived', '=', 0)->order_by('votes', 'desc')->get();
+		}))->where('archived', '=', 0)->order_by('votes', 'desc')->order_by('title', 'desc')->get();
 		
 		$movies_archived = Movie::with('user')->where('archived', '=', 1)->order_by('updated_at', 'desc')->get();
 		

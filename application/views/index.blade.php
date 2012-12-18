@@ -61,9 +61,7 @@
 				</div>
 			
 				<div class="vote_box">
-					@if(count($movie->votes_all) == 0)
 					<a class="vote icon-thumbs-up"></a>
-					@endif
 					<h4 class="votes_counter">{{ $movie->votes }}</h4>
 				</div>
 			</li>
