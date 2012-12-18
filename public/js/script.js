@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 		}, "json");
 	});
 	
-	
+	// ADD INFO POPUP ON ROLLOVER
 	$('.movie .popup_button').mouseenter(function() {
 		var movie_id = $(this).parents('.movie').attr('id');
 		var that = this;
