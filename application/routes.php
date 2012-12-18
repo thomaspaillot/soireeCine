@@ -37,9 +37,14 @@ Route::group(array('before' => 'auth'), function() {
 	Route::any('/', function() {
 		$movies = Movie::with(array('user', 'votes_all' => function($query) {
 			$query->where('user_id', '=', Auth::user()->id);
-		}))->order_by('votes', 'desc')->get();
+		}))->where('archived', '=', 0)->order_by('votes', 'desc')->get();
 		
-		return View::make('index')->with('movies', $movies)->with('page', 'main_page');
+		$movies_archived = Movie::with('user')->where('archived', '=', 1)->order_by('updated_at', 'desc')->get();
+		
+		return View::make('index')
+					->with('movies', $movies)
+					->with('movies_archived', $movies_archived)
+					->with('page', 'main_page');
 	});
 	
 	Route::post('add_movie', function() {
@@ -63,11 +68,19 @@ Route::group(array('before' => 'auth'), function() {
 		return Redirect::to('/');
 	});
 	
-	Route::post('remove_movie', function() {		
-		$movie = Movie::find(Input::get('movie_id'));
+	Route::get('remove_movie/(:num)', function($movie_id) {		
+		$movie = Movie::find($movie_id);
 		$movie->delete();
 		
-		return Response::json(array('movie_id'	=> Input::get('movie_id')));
+		return Redirect::to('/');
+	});
+	
+	Route::get('archive_movie/(:num)/(:num?)', function($movie_id, $archived = 1) {		
+		$movie = Movie::find($movie_id);
+		$movie->archived = $archived;
+		$movie->save();
+		
+		return Redirect::to('/');
 	});
 	
 	Route::post('increment_vote', function() {		

@@ -232,46 +232,85 @@ input.button {
 	margin-top: 10px;
 }
 
-#film_list {
+/*** LISTS ***/
+#lists {
 	float: left;
 	width: 700px;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
 	color: #FFF;
 }
 
-#film_list li {
+#lists > h2 {
+	font-size: 16px;
+	display: inline-block;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin: 7px 0 30px 0;
+	padding: 2px 10px 0 8px;
+	background-color: #3C3C3C;
+	color: #1E1E1E;
+}
+
+.list {
+	margin: 0 0 60px 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.isotope, .isotope .isotope-item {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-ms-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+}
+
+.isotope {
+	-webkit-transition-property: height, width;
+	-moz-transition-property: height, width;
+	-o-transition-property: height, width;
+	-ms-transition-property: height, width;
+	transition-property: height, width;
+}
+
+.isotope .isotope-item {
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property:    -moz-transform;
+	-ms-transition-property:     -ms-transform;
+	-o-transition-property:      -o-transform;
+	transition-property:         transform;
+}
+
+.movie {
 	padding: 0;
 	margin: 0 0 30px 0;
 }
 
-#film_list img {
+.movie .poster {
 	border: 2px solid #FFF;
 	float: left;
 	width: 66px;
 	margin-right: 20px;
 }
 
-#film_list .info {
+.movie .info {
 	float: left;
 	width: 600px;
 }
 
-#film_list h2 {
+.movie h2 {
 	display: inline-block;
 	font-size: 26px;
 	margin: 0 8px 0 0;
 }
 
-#film_list .popup_button {
+.movie .popup_button {
 	position: relative;
 	display: inline-block;
 	overflow: visible;
 	margin: 0 8px 0 0;
 }
 
-#film_list .popup_button a {
+.movie .popup_button a {
 	font: 14px 'Georgia';
 	line-height: 12px;
 	font-style: italic;
@@ -285,7 +324,7 @@ input.button {
 	text-decoration: none;
 }
 
-#film_list .movie_popup {
+.movie .movie_popup {
 	position: absolute;
 	top: 25px;
 	left: 20px;
@@ -296,12 +335,12 @@ input.button {
 	z-index: 100;
 }
 
-#film_list .movie_popup p {
+.movie .movie_popup p {
 	color: #3C3C3C;
 	margin: 0;
 }
 
-#film_list h3 {
+.movie h3 {
 	display: inline-block;
 	font-size: 12px;
 	font-weight: normal;
@@ -310,8 +349,8 @@ input.button {
 }
 
 /*** MOVIE DESCRIPTION & FORM ***/
-#film_list p,
-#film_list form.update_movie {
+.movie p,
+.movie form.update_movie {
 	position: relative;
 	font-size: 14px;
 	line-height: 20px;
@@ -319,7 +358,7 @@ input.button {
 	margin: 6px 0 0 0;
 }
 
-#film_list form.update_movie textarea {
+.movie form.update_movie textarea {
 	font-size: 14px;
 	line-height: 20px;
 	color: #C8C8C8;
@@ -331,7 +370,7 @@ input.button {
 	height: 65px;
 }
 
-#film_list form.update_movie input.button {
+.movie form.update_movie input.button {
 	position: absolute;
 	right: -30px;
 	top: 0;
@@ -339,9 +378,9 @@ input.button {
 	padding: 2px 4px 0 4px;
 }
 
-#film_list p:hover .edit { display: inline-block; }
+.movie p:hover .edit { display: inline-block; }
 
-#film_list p .edit {
+.movie p .edit {
 	display: none;
 	z-index: 100;
 	position: absolute;
@@ -354,13 +393,13 @@ input.button {
 	border: 0;
 }
 
-#film_list p .edit:hover {
+.movie p .edit:hover {
 	color: #A71105;
 	background-color: #FFF;
 }
 
 /*** DROPDOWN OPTIONS MENU ***/
-#film_list .options {
+.movie .options {
 	display: inline-block;
 	margin-left: 10px;
 	padding-right: 10px;
@@ -371,12 +410,12 @@ input.button {
 	cursor: pointer;
 }
 
-#film_list .options:hover,
-#film_list .options.open {
+.movie .options:hover,
+.movie .options.open {
 	color: #A71105;
 }
 
-#film_list .dropdown-menu {
+.movie .dropdown-menu {
 	background-color: #FFFFFF;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 2px;
@@ -393,14 +432,13 @@ input.button {
 	z-index: 1000;
 }
 
-#film_list .dropdown-menu li { margin: 0 0 10px 0; }
-#film_list .dropdown-menu li:last-child { margin: 0; }
-#film_list .dropdown-menu a { text-decoration: none; }
-#film_list .dropdown-menu a:hover { color: #A71105; }
+.movie .dropdown-menu li { margin: 0 0 10px 0; }
+.movie .dropdown-menu li:last-child { margin: 0; }
+.movie .dropdown-menu a { text-decoration: none; }
+.movie .dropdown-menu a:hover { color: #A71105; }
 
 /*** MOVIE VOTE ***/
-#film_list .vote_box {
-	border-top: 1px solid #FFF;
+.movie .vote_box {
 	float: right;
 	width: 70px;
 	text-align: right;
@@ -408,23 +446,23 @@ input.button {
 	margin: 0 0 0 30px;
 }
 
-#film_list .votes_counter {
+.movie .votes_counter {
 	display: inline-block;
-	font-size: 50px;
+	font-size: 30px;
 	margin: 0;
 	padding: 30px 10px 10px 0;
 }
 
-#film_list a.vote {
+.movie a.vote {
 	position: relative;
-	top: -10px;
+	top: -2px;
 	display: inline-block;
 	color: #DCDCDC;
 	text-decoration: none;
 	cursor: pointer;
 }
 
-#film_list a.vote:hover {
+.movie a.vote:hover {
 	color: #A71105;
 }
 
@@ -452,11 +490,6 @@ footer p {
 	margin: 0;
 	font-size: 11px;
 }
-
-
-
-
-
 
 
 

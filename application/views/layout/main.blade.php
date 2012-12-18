@@ -41,6 +41,7 @@
 	
 	{{ HTML::script('js/jquery.min.js') }}
 	{{ HTML::script('js/underscore.min.js') }}
+	{{ HTML::script('js/jquery.isotope.min.js') }}
 	{{ HTML::script('js/script.js') }}
 </body>
 </html>

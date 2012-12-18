@@ -1,5 +1,17 @@
 jQuery(document).ready(function($) {
 	
+	var $filmList = $('#film_list');
+	
+	$filmList.imagesLoaded(function() {
+		$('#film_list').isotope({itemSelector: '.movie',
+			getSortData : {
+				votes : function($elem) {
+					return $elem.find('.votes_counter').text();
+				}
+			}
+		});
+	});
+	
 	var moviedbURL = 'http://api.themoviedb.org/3/';
 	var apiKey = '?api_key=c1b8ad68dd05a38b411f3a6a0f45932c';
 	var posterURL = '';
@@ -22,9 +34,10 @@ jQuery(document).ready(function($) {
 				
 				if("poster_path" in data.results[0])
 					$(that).find('.poster').attr('src', posterURL + posterSize + data.results[0].poster_path);
-			}
+			}	
 		}, "json");
 	});
+	
 	
 	$('.movie .popup_button').mouseenter(function() {
 		var movie_id = $(this).parents('.movie').attr('id');
@@ -53,7 +66,8 @@ jQuery(document).ready(function($) {
 
 		$.post(BASE+'/increment_vote', data, function(data) {
 			$(counter).html(data.votes);
-			location.reload();
+			$('#film_list').isotope('updateSortData', $('#film_list .movie'))
+						   .isotope({ sortBy : 'votes', sortAscending : false });
 		});
 	});
 	
@@ -61,16 +75,6 @@ jQuery(document).ready(function($) {
 	$('.edit').click(function(evt) {
 		$(this).parent().hide();
 		$(this).parent().parent().find('.update_movie').removeClass('hidden');
-	});
-	
-	// HANDLE REMOVE MOVIE
-	$('.remove').click(function(evt) {
-		var movie = $(this).parents('.movie');
-		var movie_id = $(movie).find('input[type="hidden"]').val();
-		
-		$.post(BASE+'/remove_movie', {'movie_id': movie_id}, function(data) {
-			$(movie).remove();
-		});
 	});
 	
 	// HANDLE OPTIONS DROPDOWN MENU
