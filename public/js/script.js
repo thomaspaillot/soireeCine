@@ -59,6 +59,7 @@ jQuery(document).ready(function($) {
 	// HANDLE VOTE
 	$('.vote').click(function(evt) {		
 		var counter = $(this).parents('.movie').find('.votes_counter');
+		var vote_button = this;
 		
 		var data = {
 			'user_id': $('input[type="hidden"]').attr('value'),
@@ -68,6 +69,8 @@ jQuery(document).ready(function($) {
 
 		$.post(BASE+'/increment_vote', data, function(data) {
 			$(counter).html(data.votes);
+			$(vote_button).remove();
+			
 			$('#film_list').isotope('updateSortData', $('#film_list .movie'))
 						   .isotope({ sortBy : 'votes', sortAscending : false });
 		});
